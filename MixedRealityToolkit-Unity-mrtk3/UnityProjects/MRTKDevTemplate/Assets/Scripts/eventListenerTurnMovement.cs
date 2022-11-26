@@ -33,3 +33,44 @@
    // }}
     
 
+using Microsoft.MixedReality.Toolkit.SpatialManipulation; // this was missing
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+public class eventListenerTurnMovement : MonoBehaviour, IEventSystemHandler
+{
+    public static ObjectManipulator ob;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        if (gameObject.tag.Contains("BlackPiece") || gameObject.tag == "WhitePiece")
+        {
+            print("This is a chess piece");
+        }
+        ob = GetComponent<ObjectManipulator>();
+
+
+       
+    }
+
+    //OnSelectEntered
+    // Update is called once per frame
+    void Update()
+    {
+
+            if (ob.IsGrabSelected == true)
+            {
+               ob.enabled = true;
+                
+            }
+   }
+
+    public void BoatTurn()
+    {
+        print("");
+    }
+}
