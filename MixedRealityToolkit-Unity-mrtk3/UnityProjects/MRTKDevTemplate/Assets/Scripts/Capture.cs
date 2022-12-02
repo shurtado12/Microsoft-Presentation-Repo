@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Capture : MonoBehaviour
 {
+    public static bool PieceWasCaptured;
     private bool pieceIsGrabbed = false;
     private bool hasAlreadyCaptured = false;
     public void uponGrab()
@@ -27,9 +28,7 @@ public class Capture : MonoBehaviour
             {
                 Destroy(collision.gameObject); // Destroys enemy White Piece
                 hasAlreadyCaptured = true;
-                Turn.whiteTurn = true;//ends black turn
-
-
+                PieceWasCaptured = true;
             }
         }
         else if (gameObject.tag == "WhitePiece" && Turn.whiteTurn && pieceIsGrabbed)
@@ -38,10 +37,12 @@ public class Capture : MonoBehaviour
             {
                 Destroy(collision.gameObject);// Destroys enemy White Piece
                 hasAlreadyCaptured = true;
-                Turn.whiteTurn = false;// Ends White Turn
-
+                PieceWasCaptured = true;
             }
         }
+
+        PieceWasCaptured = false;
+
     }
 }
 

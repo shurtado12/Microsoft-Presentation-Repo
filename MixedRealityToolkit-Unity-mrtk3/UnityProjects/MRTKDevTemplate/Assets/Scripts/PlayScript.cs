@@ -16,22 +16,30 @@ public class PlayScript : MonoBehaviour, IEventSystemHandler
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Turn.whiteTurn && gameObject.tag == "WhitePiece")
+        if (Capture.PieceWasCaptured)
         {
-            allowed = true;
-            ob.AllowedManipulations = TransformFlags.Move;
-            print("This is a white piece and its whites turn Enabling movement");
+            Turn.playIsActive = false;
         }
-        else if (!Turn.whiteTurn && gameObject.tag == "BlackPiece")
+
+        if (!Turn.playIsActive)
         {
-            allowed = true;
-            ob.AllowedManipulations = TransformFlags.Move;
-            print("This is a black piece and its blacks turn Enabling movement");
-        }
-        else
-        {
+            // This will be only done once
+            if (Turn.whiteTurn && gameObject.tag == "WhitePiece")
+            {
+                allowed = true;
+                print($"This is a white piece {gameObject.name} and its whites turn allowing movement");
+                return;
+            }
+
+            if (!Turn.whiteTurn && gameObject.tag == "BlackPiece")
+            {
+                allowed = true;
+                print($"This is a black piece {gameObject.name} and its blacks turn allowing movement");
+                return;
+            }
 
             allowed = false;
+            ob = GetComponent<ObjectManipulator>();
             ob.AllowedManipulations = 0;
         }
 
@@ -39,47 +47,38 @@ public class PlayScript : MonoBehaviour, IEventSystemHandler
 
     public void PlayStarted()
     {
-        if (gameObject.tag == "WhitePiece")
-        {
-            print("This is a WhitePiece and its blacks turn disabling movement");
-        }
-        if (gameObject.tag == "BlackPiece")
-        {
-            print("This is a BlackPiece and its whites turn disabling movement");
-        }
+        Turn.playIsActive = true;
+        print($"This is a {gameObject.tag}");
 
+        ob = GetComponent<ObjectManipulator>();
         if (!allowed)
         {
-            print("Play Script I am NOT  allowed to move");
+            print($"Play Script {gameObject.name} I am NOT  allowed to move");
 
-            ob.AllowedManipulations = 0;
+            ob.AllowedManipulations = TransformFlags.None;
 
             //To disable ob.AllowedManipulations  = 0;
         }
         else
         {
-
             print("Play Script I am allowed to move");
             ob.AllowedManipulations = TransformFlags.Move;
         }
-        //  else gameObject.ob.
+
     }
 
     public void PlayEnded()
     {
-                    if (gameObject.tag == "WhitePiece")
-            {
-                print("This is a WhitePiece and its blacks turn disabling movement");
-            }
-            if (gameObject.tag == "BlackPiece")
-            {
-                print("This is a BlackPiece and its whites turn disabling movement");
-            }
-        if (allowed)
+        print($"Play has ended for {gameObject.tag} {gameObject.name}");
+        if (allowed && Turn.playIsActive)
         {
-            print("Play Script has ended disabing move");
+            print("TURN ENDED");
+            Turn.playIsActive = false;
 
+            allowed = false;
+            ob = GetComponent<ObjectManipulator>();
             ob.AllowedManipulations = TransformFlags.None;
+            Turn.whiteTurn = !Turn.whiteTurn;
         }
     }
 }
