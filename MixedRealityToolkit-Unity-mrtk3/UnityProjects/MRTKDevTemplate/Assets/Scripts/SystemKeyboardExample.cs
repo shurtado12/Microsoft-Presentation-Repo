@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using Microsoft.MixedReality.Toolkit.Input;
 using Microsoft.MixedReality.Toolkit.UX;
 using TMPro;
 using UnityEngine;
@@ -85,7 +84,7 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
 #endif
         }
 
-        
+
 #if WINDOWS_UWP
         private void Update()
         {

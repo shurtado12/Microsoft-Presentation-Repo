@@ -104,9 +104,9 @@ namespace Microsoft.MixedReality.Toolkit.UX
 
 #if UNITY_EDITOR
         protected override void OnValidate()
-        {   
+        {
             base.OnValidate();
-            
+
             // Validate that no transition type is set. You shouldn't be using this
             // for any sort of UI visuals; use a StatefulInteractable and a 
             // StateVisualizer instead, even for UI.

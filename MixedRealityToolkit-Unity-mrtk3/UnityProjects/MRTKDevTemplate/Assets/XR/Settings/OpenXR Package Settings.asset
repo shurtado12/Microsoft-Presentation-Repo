@@ -122,7 +122,6 @@ MonoBehaviour:
   m_Name: Standalone
   m_EditorClassIdentifier: 
   features:
-  - {fileID: -3183123910868133391}
   - {fileID: 8104048054061489833}
   - {fileID: 756655961458227919}
   - {fileID: -4917165930297877912}
@@ -135,9 +134,10 @@ MonoBehaviour:
   - {fileID: -9160837235444078365}
   - {fileID: 7184792380987883228}
   - {fileID: -3675173896095908783}
-  - {fileID: -45282039415450401}
   - {fileID: -6001689167010836115}
   - {fileID: -3189435746241105910}
+  - {fileID: -45282039415450401}
+  - {fileID: -3183123910868133391}
   m_renderMode: 1
   m_depthSubmissionMode: 2
 --- !u!114 &-6549014908254381072
@@ -423,11 +423,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0ebc320a151d3408ea1e9fce54d40e, type: 3}
   m_Name: OpenXR Package Settings
   m_EditorClassIdentifier: 
-  Keys: 010000000e00000007000000
+  Keys: 010000000e000000070000000d000000
   Values:
   - {fileID: -7232978043429515688}
   - {fileID: -3301589181217746260}
   - {fileID: -5356075571387229412}
+  - {fileID: 9051599798392293166}
 --- !u!114 &668207626733321193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -922,3 +923,18 @@ MonoBehaviour:
   required: 0
   cacheSize: 1048576
   perThreadCacheSize: 51200
+--- !u!114 &9051599798392293166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5a1f07dc5afe854f9f12a4194aca3fb, type: 3}
+  m_Name: WebGL
+  m_EditorClassIdentifier: 
+  features: []
+  m_renderMode: 1
+  m_depthSubmissionMode: 0

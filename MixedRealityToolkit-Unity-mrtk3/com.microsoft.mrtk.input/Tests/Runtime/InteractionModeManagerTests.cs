@@ -86,7 +86,7 @@ namespace Microsoft.MixedReality.Toolkit.Input.Tests
 
             // move the hand far away and validate that we are in the default mode
             yield return rightHand.SetHandshape(HandshapeTypes.HandshapeId.Open);
-            yield return rightHand.MoveTo(cube.transform.position + new Vector3(3.0f,0,0));
+            yield return rightHand.MoveTo(cube.transform.position + new Vector3(3.0f, 0, 0));
             yield return RuntimeTestUtilities.WaitForUpdates();
 
             currentMode = InteractionModeManager.Instance.DefaultMode;

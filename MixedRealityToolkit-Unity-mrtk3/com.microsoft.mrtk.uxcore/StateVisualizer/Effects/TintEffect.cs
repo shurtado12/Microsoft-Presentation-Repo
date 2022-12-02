@@ -131,7 +131,7 @@ namespace Microsoft.MixedReality.Toolkit.UX
                 {
                     ApplyColor(startColors[i], tintables[i]);
                 }
-                
+
             }
 
             /// <inheritdoc />

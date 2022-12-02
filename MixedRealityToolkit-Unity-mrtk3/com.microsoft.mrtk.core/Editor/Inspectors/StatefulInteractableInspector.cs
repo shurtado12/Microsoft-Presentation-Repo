@@ -176,9 +176,9 @@ namespace Microsoft.MixedReality.Toolkit.Editor
                 EditorGUILayout.Space();
 
                 DrawTimedFlag(isToggled, interactable.IsToggled, previousGUIColor, Color.cyan);
-                
+
                 enabledEventsFoldout = EditorGUILayout.Foldout(enabledEventsFoldout, "OnEnable/Disable", true);
-                
+
                 if (enabledEventsFoldout)
                 {
                     EditorGUILayout.PropertyField(onEnabled);

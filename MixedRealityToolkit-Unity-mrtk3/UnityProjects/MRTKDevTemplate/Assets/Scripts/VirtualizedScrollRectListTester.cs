@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using Microsoft.MixedReality.Toolkit.UX;
 using TMPro;
 using UnityEngine;
-using Microsoft.MixedReality.Toolkit.UX;
 
 namespace Microsoft.MixedReality.Toolkit.Examples.Demos
 {
@@ -28,7 +28,7 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
                 foreach (var text in go.GetComponentsInChildren<TextMeshProUGUI>())
                 {
                     if (text.gameObject.name == "Text")
-	                    text.text = $"{i} {words[i%words.Length]}";
+                        text.text = $"{i} {words[i % words.Length]}";
                 }
             };
         }
@@ -39,8 +39,8 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
             if (sinScroll)
             {
                 list.Scroll = (Mathf.Sin(Time.time * 0.5f - (Mathf.PI / 2)) * 0.5f + 0.5f) * list.MaxScroll;
-                destScroll  = list.Scroll;
-                animate     = false;
+                destScroll = list.Scroll;
+                animate = false;
             }
 
             if (animate)
@@ -50,7 +50,7 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
                 if (Mathf.Abs(list.Scroll - destScroll) < 0.02f)
                 {
                     list.Scroll = destScroll;
-                    animate     = false;
+                    animate = false;
                 }
             }
         }
@@ -58,15 +58,15 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
         /// <summary>Scrolls the VirtualizedScrollRect to the next page.</summary>
         public void Next()
         {
-            sinScroll  = false;
-            animate    = true;
+            sinScroll = false;
+            animate = true;
             destScroll = Mathf.Min(list.MaxScroll, Mathf.Floor(list.Scroll / list.RowsOrColumns) * list.RowsOrColumns + list.TotallyVisibleCount);
         }
         /// <summary>Scrolls the VirtualizedScrollRect to the previous page.</summary>
         public void Prev()
         {
-            sinScroll  = false;
-            animate    = true;
+            sinScroll = false;
+            animate = true;
             destScroll = Mathf.Max(0, Mathf.Floor(list.Scroll / list.RowsOrColumns) * list.RowsOrColumns - list.TotallyVisibleCount);
         }
 

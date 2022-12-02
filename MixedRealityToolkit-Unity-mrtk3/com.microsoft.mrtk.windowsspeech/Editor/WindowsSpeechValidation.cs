@@ -15,7 +15,7 @@ namespace Microsoft.MixedReality.Toolkit.Speech.Windows.Editor
         [InitializeOnLoadMethod]
         private static void AddWindowsSpeechValidationRule()
         {
-            List<BuildValidationRule> rules = new List<BuildValidationRule>(){ GenerateMicrophoneCapabilityRule() };
+            List<BuildValidationRule> rules = new List<BuildValidationRule>() { GenerateMicrophoneCapabilityRule() };
             MRTKProjectValidation.AddTargetDependentRules(rules, BuildTargetGroup.WSA);
         }
 

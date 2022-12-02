@@ -28,9 +28,9 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
 
         private void Start()
         {
-            for(int i = 0; i < targetObjects.Length; i++)
+            for (int i = 0; i < targetObjects.Length; i++)
             {
-                if(ToggleCollection.CurrentIndex != i)
+                if (ToggleCollection.CurrentIndex != i)
                 {
                     targetObjects[i].SetActive(false);
                 }

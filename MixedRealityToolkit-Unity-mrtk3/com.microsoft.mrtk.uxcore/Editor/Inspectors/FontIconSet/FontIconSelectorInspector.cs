@@ -34,7 +34,7 @@ namespace Microsoft.MixedReality.Toolkit.Editor
             fontIconsProp = serializedObject.FindProperty("fontIcons");
             currentIconNameProp = serializedObject.FindProperty("currentIconName");
             tmProProp = serializedObject.FindProperty("textMeshProComponent");
-            
+
         }
 
         public override void OnInspectorGUI()
@@ -94,7 +94,7 @@ namespace Microsoft.MixedReality.Toolkit.Editor
 
             scrollAmount = EditorGUILayout.BeginScrollView(scrollAmount, GUILayout.MaxHeight(128), GUILayout.MinHeight(64));
             EditorGUILayout.BeginHorizontal();
-            
+
             foreach (string iconName in fontIconSet.GlyphIconsByName.Keys)
             {
                 uint unicodeValue = fontIconSet.GlyphIconsByName[iconName];
@@ -111,7 +111,7 @@ namespace Microsoft.MixedReality.Toolkit.Editor
                     GUILayout.MinWidth(tileSize),
                     GUILayout.MaxWidth(tileSize)))
                 {
-                    Undo.RecordObjects(new UnityEngine.Object[]{fontIconSelector, fontIconSelector.TextMeshProComponent}, "Changed icon");
+                    Undo.RecordObjects(new UnityEngine.Object[] { fontIconSelector, fontIconSelector.TextMeshProComponent }, "Changed icon");
                     fontIconSelector.CurrentIconName = iconName;
                     PrefabUtility.RecordPrefabInstancePropertyModifications(fontIconSelector);
                     PrefabUtility.RecordPrefabInstancePropertyModifications(fontIconSelector.TextMeshProComponent);
@@ -132,7 +132,7 @@ namespace Microsoft.MixedReality.Toolkit.Editor
             {
                 EditorGUILayout.EndHorizontal();
             }
-            
+
             if (Event.current.type == EventType.Repaint)
             {
                 float editorWindowWidth = GUILayoutUtility.GetLastRect().width;

@@ -1,8 +1,8 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using UnityEngine;
 using Microsoft.MixedReality.Toolkit.UX;
+using UnityEngine;
 
 namespace Microsoft.MixedReality.Toolkit.Examples.Demos
 {
@@ -62,7 +62,7 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
 
         public void Update()
         {
-            if(rotateObject == true)
+            if (rotateObject == true)
             {
                 transform.localRotation = Quaternion.AngleAxis(angularVelocity * Time.deltaTime, rotationAxis) * transform.localRotation;
             }

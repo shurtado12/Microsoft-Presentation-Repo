@@ -34,7 +34,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
 
 #if MROPENXR_PRESENT && (UNITY_STANDALONE_WIN || UNITY_WSA || UNITY_ANDROID) && GLTFAST_PRESENT && KTX_PRESENT
             ControllerModel controllerModelProvider = handedness == Handedness.Left ? ControllerModel.Left :
-                                                        handedness == Handedness.Right ?  ControllerModel.Right :
+                                                        handedness == Handedness.Right ? ControllerModel.Right :
                                                         null;
 
             if (controllerModelProvider == null)

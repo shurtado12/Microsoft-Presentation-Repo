@@ -1,9 +1,8 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using Microsoft.MixedReality.Toolkit.Input;
-using Microsoft.MixedReality.Toolkit.UX;
 using Microsoft.MixedReality.Toolkit.Diagnostics;
+using Microsoft.MixedReality.Toolkit.Input;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -41,7 +40,7 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
         {
             rayToggle.OnClicked.AddListener(() => SetHandRaysActive(rayToggle.IsToggled));
             gazePinchToggle.OnClicked.AddListener(() => SetGazePinchActive(gazePinchToggle.IsToggled));
-            
+
             previousSceneButton.enabled = IsSceneValid(SceneManager.GetActiveScene().buildIndex - 1);
             nextSceneButton.enabled = IsSceneValid(SceneManager.GetActiveScene().buildIndex + 1);
 
@@ -62,7 +61,7 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
 
             sceneTitleLabel.text = SceneManager.GetActiveScene().name + ".unity";
         }
-        
+
         /// <summary>
         /// Toggle hand rays.
         /// </summary>

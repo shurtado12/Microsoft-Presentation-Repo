@@ -64,7 +64,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
                 {
                     // We need an arbitrary GameObject to feed it; null will prevent
                     // the event from being processed by the system, strangely enough.
-                    gameObject = gameObject, 
+                    gameObject = gameObject,
                     module = this,
                     distance = ray.direction.magnitude, // arbitrary
                     worldPosition = ray.origin + ray.direction, // arbitrary distance from camera

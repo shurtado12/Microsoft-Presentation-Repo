@@ -87,7 +87,7 @@ namespace Microsoft.MixedReality.Toolkit.Tools
         /// Name of configuration class, if enabled by <see cref="CreateConfiguration"/>
         /// to create for new subystem.
         /// </summary>
-        public string ConfigurationName => CreateConfiguration ? $"{BaseClassName}Config" : "BaseSubsystemConfig"; 
+        public string ConfigurationName => CreateConfiguration ? $"{BaseClassName}Config" : "BaseSubsystemConfig";
 
         /// <summary>
         /// Name of descriptor class to create for new subystem.
@@ -144,7 +144,7 @@ namespace Microsoft.MixedReality.Toolkit.Tools
         public SubsystemGenerator()
         {
             Reset();
-        }                                   
+        }
 
         /// <summary>
         /// Creates the subsystem source files based off of the provided templates.

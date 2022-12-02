@@ -6,8 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 
 namespace Microsoft.MixedReality.Toolkit.Tools
 {
@@ -119,7 +119,7 @@ namespace Microsoft.MixedReality.Toolkit.Tools
 
             foreach (string s in errors)
             {
-                sb.AppendLine(s); 
+                sb.AppendLine(s);
             }
 
             EditorGUILayout.HelpBox(sb.ToString(), MessageType.Error);
@@ -268,7 +268,7 @@ namespace Microsoft.MixedReality.Toolkit.Tools
                 {
                     EditorGUILayout.LabelField("Subsystem base class:", GUILayout.Width(160));
                     EditorGUILayout.LabelField($"{subsystemGenerator.BaseClassName}.cs", GUILayout.Width(400));
-                    subsystemGenerator.DontCreateBaseClass   = EditorGUILayout.ToggleLeft(
+                    subsystemGenerator.DontCreateBaseClass = EditorGUILayout.ToggleLeft(
                         "Skip",
                         subsystemGenerator.DontCreateBaseClass);
                 }
@@ -380,7 +380,7 @@ namespace Microsoft.MixedReality.Toolkit.Tools
 
             using (new EditorGUI.IndentLevelScope())
             {
-                EditorGUILayout.LabelField($"Your new subsystem {subsystemGenerator.SubsystemName} has been successfully created.");                
+                EditorGUILayout.LabelField($"Your new subsystem {subsystemGenerator.SubsystemName} has been successfully created.");
                 EditorGUILayout.Space(6);
 
                 EditorGUILayout.LabelField("Next steps", EditorStyles.boldLabel);
@@ -403,7 +403,7 @@ namespace Microsoft.MixedReality.Toolkit.Tools
             {
                 if (GUILayout.Button("Start Over"))
                 {
-                    subsystemGenerator.Reset();                    
+                    subsystemGenerator.Reset();
                 }
 
                 if (GUILayout.Button("Close"))

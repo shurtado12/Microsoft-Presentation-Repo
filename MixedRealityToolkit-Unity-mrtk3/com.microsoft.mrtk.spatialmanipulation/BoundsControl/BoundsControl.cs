@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 #if UNITY_EDITOR
-using UnityEditor;
 #endif
 
 namespace Microsoft.MixedReality.Toolkit.SpatialManipulation

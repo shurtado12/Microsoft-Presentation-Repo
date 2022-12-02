@@ -50,7 +50,7 @@ namespace Microsoft.MixedReality.Toolkit.UX
         private void OnEnable()
         {
             toggleCollection.OnToggleSelected.AddListener(ChangeTab);
-            
+
             // Ensure the correct view is visible when waking up.
             ChangeTab(CurrentVisibleSectionIndex);
         }

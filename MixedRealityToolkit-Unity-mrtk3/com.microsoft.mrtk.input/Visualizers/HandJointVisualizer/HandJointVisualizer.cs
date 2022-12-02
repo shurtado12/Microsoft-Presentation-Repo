@@ -3,7 +3,6 @@
 
 
 using Microsoft.MixedReality.Toolkit.Subsystems;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -68,7 +67,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
         void OnDrawGizmos()
         {
             if (!enabled) { return; }
-            
+
             // Query all joints in the hand.
             if (handsSubsystem == null || !handsSubsystem.TryGetEntireHand(handNode, out IReadOnlyList<HandJointPose> joints))
             {

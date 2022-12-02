@@ -1,14 +1,12 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System.Linq;
+using TMPro;
 using UnityEditor;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.UI;
-using UnityEngine.EventSystems;
-using TMPro;
-using System.Reflection;
-using System.Linq;
 
 namespace Microsoft.MixedReality.Toolkit.Editor
 {
@@ -47,7 +45,7 @@ namespace Microsoft.MixedReality.Toolkit.Editor
                 PlaceUIElementRoot = typeof(SelectableEditor).Assembly.GetType("UnityEditor.UI.MenuOptions")?.GetMethod(
                                                 "PlaceUIElementRoot",
                                                 System.Reflection.BindingFlags.NonPublic |
-                                                System.Reflection.BindingFlags.Static );
+                                                System.Reflection.BindingFlags.Static);
                 if (PlaceUIElementRoot == null)
                 {
                     Debug.LogError("Whoops! Looks like Unity changed the internals of their UGUI editor utilities. Please file a bug!");
@@ -56,7 +54,7 @@ namespace Microsoft.MixedReality.Toolkit.Editor
                 }
             }
 
-            PlaceUIElementRoot.Invoke(null, new object[] { gameObject, menuCommand});
+            PlaceUIElementRoot.Invoke(null, new object[] { gameObject, menuCommand });
 
             // The above call will create a new Canvas for us (if we don't have one),
             // but it won't have optimal settings for MRTK UX. Let's fix that!
@@ -94,7 +92,7 @@ namespace Microsoft.MixedReality.Toolkit.Editor
 
             return gameObject;
         }
-        
+
         [MenuItem("GameObject/UI/MRTK/Action Button", false, 0)]
         private static void CreateActionButton(MenuCommand menuCommand)
         {

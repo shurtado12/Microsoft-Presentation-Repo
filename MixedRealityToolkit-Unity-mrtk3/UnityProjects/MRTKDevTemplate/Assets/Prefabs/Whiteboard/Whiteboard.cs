@@ -2,10 +2,9 @@
 // Licensed under the MIT License.
 
 using System.Collections.Generic;
-using UnityEngine;
 using Unity.Collections;
+using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-using Microsoft.MixedReality.Toolkit.Input;
 
 namespace Microsoft.MixedReality.Toolkit.Examples.Demos
 {
@@ -66,7 +65,7 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
         }
 
         public override void ProcessInteractable(XRInteractionUpdateOrder.UpdatePhase updatePhase)
-        {   
+        {
             // Dynamic is effectively just your normal Update().
             if (updatePhase == XRInteractionUpdateOrder.UpdatePhase.Dynamic)
             {
@@ -87,7 +86,7 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
                     Vector2 lastPosition;
 
                     // Have we seen this interactor before? If not, last position = current position.
-                    if(!lastPositions.TryGetValue(interactor, out lastPosition))
+                    if (!lastPositions.TryGetValue(interactor, out lastPosition))
                     {
                         lastPosition = pixelCoordinate;
                     }
@@ -97,7 +96,7 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
                     {
                         DrawSplat(Vector2.Lerp(lastPosition, pixelCoordinate, i / Vector2.Distance(pixelCoordinate, lastPosition)), data);
                     }
-                    
+
                     // Write/update the last-position.
                     if (lastPositions.ContainsKey(interactor))
                     {

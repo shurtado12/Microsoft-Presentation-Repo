@@ -41,7 +41,7 @@ namespace Microsoft.MixedReality.Toolkit.SpatialManipulation
         /// <summary>
         /// Should the handle maintain its global size, even as the object changes size?
         /// </summary>
-        public bool MaintainGlobalSize { get => maintainGlobalSize; set => maintainGlobalSize = value;}
+        public bool MaintainGlobalSize { get => maintainGlobalSize; set => maintainGlobalSize = value; }
 
         #region ISnapInteractable
 
@@ -138,7 +138,7 @@ namespace Microsoft.MixedReality.Toolkit.SpatialManipulation
             transform.localScale = new Vector3(1.0f / transform.lossyScale.x,
                                                1.0f / transform.lossyScale.y,
                                                1.0f / transform.lossyScale.z);
-            
+
             // If we don't want to maintain the overall *size*, we scale
             // by the maximum component of the box so that the handles grow/shrink
             // with the overall box manipulation.

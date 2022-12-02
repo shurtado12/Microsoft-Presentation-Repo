@@ -85,7 +85,7 @@ namespace Microsoft.MixedReality.Toolkit.Data
 
         private void Update()
         {
-            if (_valueChanged )
+            if (_valueChanged)
             {
                 UpdateBatteryLevelInformation();
                 _valueChanged = false;

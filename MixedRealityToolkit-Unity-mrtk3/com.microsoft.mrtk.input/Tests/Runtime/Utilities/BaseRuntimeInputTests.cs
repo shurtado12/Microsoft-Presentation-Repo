@@ -5,8 +5,8 @@ using Microsoft.MixedReality.Toolkit.Core.Tests;
 using System.Collections;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine.XR.Interaction.Toolkit.Inputs.Interactions;
 using UnityEngine.XR.Interaction.Toolkit.Inputs.Composites;
+using UnityEngine.XR.Interaction.Toolkit.Inputs.Interactions;
 
 namespace Microsoft.MixedReality.Toolkit.Input.Tests
 {

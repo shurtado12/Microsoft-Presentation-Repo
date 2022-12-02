@@ -1,9 +1,8 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using System.Collections.Generic;
 using Microsoft.MixedReality.Toolkit.Audio;
-using TMPro;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Microsoft.MixedReality.Toolkit.Examples
@@ -27,7 +26,7 @@ namespace Microsoft.MixedReality.Toolkit.Examples
         {
             effect = audioEmitter.EnsureComponent<AudioBandPassEffect>();
         }
-        
+
         public void SetFilter(int index)
         {
             effect.Filter = filters[index];

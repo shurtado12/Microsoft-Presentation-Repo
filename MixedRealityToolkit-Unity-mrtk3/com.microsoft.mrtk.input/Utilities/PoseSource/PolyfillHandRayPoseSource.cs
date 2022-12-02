@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using Microsoft.MixedReality.Toolkit.Subsystems;
 using System;
 using UnityEngine;
 using UnityEngine.XR;
@@ -41,7 +40,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
             poseRetrieved &= HandsAggregator != null && HandsAggregator.TryGetJoint(TrackedHandJoint.Palm, handNode.Value, out palm);
 
             // Tick the hand ray generator function. Uses index knuckle for position.
-            if(poseRetrieved)
+            if (poseRetrieved)
             {
                 handRay.Update(knuckle.Position, -palm.Up, Camera.main.transform, Hand);
                 Ray ray = handRay.Ray;

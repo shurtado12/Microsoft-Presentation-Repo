@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -65,7 +64,7 @@ public class boardStartManage : MonoBehaviour
            {"f2", "PawnLight (2)"},
            {"g2", "PawnLight (1)"},
            {"h2", "PawnLight"},
-           
+
            {"h8", "RookDark (1)"},
            {"g8", "KnightDark (1)"},
            {"f8", "BishopDark"},
@@ -85,7 +84,7 @@ public class boardStartManage : MonoBehaviour
         };
 
 
-        foreach (var (key,value) in startingPosition)
+        foreach (var (key, value) in startingPosition)
         {
             // Get board position A1
             Transform cell = BoardPositions.transform.Find(key);

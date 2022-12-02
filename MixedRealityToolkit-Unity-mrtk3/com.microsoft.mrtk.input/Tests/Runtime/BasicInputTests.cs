@@ -2,19 +2,15 @@
 // Licensed under the MIT License.
 
 using Microsoft.MixedReality.Toolkit.Core.Tests;
+using Microsoft.MixedReality.Toolkit.Input.Simulation;
+using Microsoft.MixedReality.Toolkit.Subsystems;
 using NUnit.Framework;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.TestTools;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
-using Microsoft.MixedReality.Toolkit.Input;
-using Microsoft.MixedReality.Toolkit.Input.Simulation;
-using Microsoft.MixedReality.Toolkit;
-using Microsoft.MixedReality.Toolkit.Subsystems;
-
 using HandshapeId = Microsoft.MixedReality.Toolkit.Input.HandshapeTypes.HandshapeId;
 
 namespace Microsoft.MixedReality.Toolkit.Input.Tests
@@ -102,7 +98,7 @@ namespace Microsoft.MixedReality.Toolkit.Input.Tests
             Vector3 cubePos = new Vector3(0.1f, 0.1f, 1);
             cube.transform.position = cubePos;
             cube.transform.localScale = Vector3.one * 1.0f;
-            
+
             var testHand = new TestHand(Handedness.Right);
             InputTestUtilities.SetHandAnchorPoint(Handedness.Right, ControllerAnchorPoint.Grab);
 
@@ -269,7 +265,7 @@ namespace Microsoft.MixedReality.Toolkit.Input.Tests
         {
             GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
             StatefulInteractable interactable = cube.AddComponent<StatefulInteractable>();
-            cube.transform.position = new Vector3(0,0,1);
+            cube.transform.position = new Vector3(0, 0, 1);
             cube.transform.localScale = Vector3.one * 0.1f;
 
             yield return RuntimeTestUtilities.WaitForUpdates();
@@ -371,7 +367,7 @@ namespace Microsoft.MixedReality.Toolkit.Input.Tests
 
             didFireEvent = false;
             interactable.ForceSetToggled(true, fireEvents: false);
-            
+
             Assert.IsTrue(interactable.IsToggled, "Interactable didn't get toggled.");
             Assert.IsFalse(didFireEvent, "ForceSetToggled(true, fireEvents:false) should NOT have fired the event.");
 

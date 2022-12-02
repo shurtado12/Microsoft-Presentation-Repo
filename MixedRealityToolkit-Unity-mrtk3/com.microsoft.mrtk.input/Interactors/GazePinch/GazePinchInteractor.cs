@@ -251,7 +251,7 @@ namespace Microsoft.MixedReality.Toolkit.Input
                     positionToApply = pinchPose.position;
                 }
             }
-            
+
 
             attachTransform.SetPositionAndRotation(positionToApply, rotationToApply);
         }

@@ -1,8 +1,6 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,20 +38,20 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
         }
 
         void OnTransformChildrenChanged() => UpdatePositions();
-        void OnValidate()                 => UpdatePositions();
+        void OnValidate() => UpdatePositions();
 
         void UpdatePositions()
         {
             if (scrollRect == null) { return; }
 
-            float height  = scrollRect.viewport.rect.yMin - scrollRect.viewport.rect.yMax;
+            float height = scrollRect.viewport.rect.yMin - scrollRect.viewport.rect.yMax;
             float height2 = height * height;
-            float top     = ((RectTransform)transform).rect.yMax + transform.localPosition.y;
+            float top = ((RectTransform)transform).rect.yMax + transform.localPosition.y;
 
             for (int i = 0; i < transform.childCount; i++)
             {
                 RectTransform tr = (RectTransform)transform.GetChild(i);
-                float         y  = (tr.localPosition.y + tr.rect.center.y) + top;
+                float y = (tr.localPosition.y + tr.rect.center.y) + top;
 
                 // This uses a parabola for the curve (tested alongside a
                 // cosine curve, the parabola looked better), and the
@@ -62,7 +60,7 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
                 //
                 // Graph for this here:
                 // https://www.desmos.com/calculator/sfwaxipupr
-                float curve   = -(4 * curveDepth * y * (-height + y)) / height2;
+                float curve = -(4 * curveDepth * y * (-height + y)) / height2;
                 float tangent = -(4 * curveDepth * (height - 2 * y)) / height2;
 
                 // Correct for the pivot point being in the top left corner,
@@ -75,10 +73,10 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
                 // trig calls.
 
                 // float offset = Mathf.Sin(Mathf.PI - (Mathf.Atan(1.0f / tangent) + Mathf.PI / 2.0f)) * (tr.rect.height / 2.0f) * Mathf.Sign(tangent);
-                float offset = (tr.rect.height / 2.0f) / Mathf.Sqrt(1.0f / (tangent*tangent) + 1) * Mathf.Sign(tangent);
+                float offset = (tr.rect.height / 2.0f) / Mathf.Sqrt(1.0f / (tangent * tangent) + 1) * Mathf.Sign(tangent);
 
                 Vector3 pos = tr.localPosition;
-                tr.localPosition = new Vector3(pos.x, pos.y, (curve - offset) - curveDepth );
+                tr.localPosition = new Vector3(pos.x, pos.y, (curve - offset) - curveDepth);
                 tr.localRotation = Quaternion.LookRotation(new Vector3(0, tangent, 1), Vector3.up);
             }
         }
