@@ -3,9 +3,8 @@ using UnityEngine;
 
 public class Capture : MonoBehaviour
 {
-    public static bool PieceWasCaptured;
     private bool pieceIsGrabbed = false;
-    private bool hasAlreadyCaptured = false;
+    public static bool hasAlreadyCaptured = false;
     public void uponGrab()
     {// Entered upon held
      //   hasAlreadyCaptured = false;
@@ -15,33 +14,37 @@ public class Capture : MonoBehaviour
     {//entered upon release
 
         pieceIsGrabbed = false;
-    }
+        hasAlreadyCaptured = false;
+}
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == gameObject.tag)
+        if (Turn.playIsActive)
         {
-            Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
-        }
-        if (gameObject.tag == "BlackPiece" && !Turn.whiteTurn && pieceIsGrabbed)
-        { // This is black turn
-            if (collision.gameObject.tag != "board" && collision.gameObject.tag == "WhitePiece")
+            if (collision.gameObject.tag == gameObject.tag)
             {
-                Destroy(collision.gameObject); // Destroys enemy White Piece
-                hasAlreadyCaptured = true;
-                PieceWasCaptured = true;
+                Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
             }
-        }
-        else if (gameObject.tag == "WhitePiece" && Turn.whiteTurn && pieceIsGrabbed)
-        { //This is white turn
-            if (collision.gameObject.tag != "board" && collision.gameObject.tag == "BlackPiece")
-            {
-                Destroy(collision.gameObject);// Destroys enemy White Piece
-                hasAlreadyCaptured = true;
-                PieceWasCaptured = true;
-            }
-        }
 
-        PieceWasCaptured = false;
+            if (!hasAlreadyCaptured)
+            {
+                if (gameObject.tag == "BlackPiece" && !Turn.whiteTurn && pieceIsGrabbed)
+                { // This is black turn
+                    if (collision.gameObject.tag != "board" && collision.gameObject.tag == "WhitePiece")
+                    {
+                        Destroy(collision.gameObject); // Destroys enemy White Piece
+                        hasAlreadyCaptured = true;
+                    }
+                }
+                else if (gameObject.tag == "WhitePiece" && Turn.whiteTurn && pieceIsGrabbed)
+                { //This is white turn
+                    if (collision.gameObject.tag != "board" && collision.gameObject.tag == "BlackPiece")
+                    {
+                        Destroy(collision.gameObject);// Destroys enemy White Piece
+                        hasAlreadyCaptured = true;
+                    }
+                }
+            }
+        }
 
     }
 }

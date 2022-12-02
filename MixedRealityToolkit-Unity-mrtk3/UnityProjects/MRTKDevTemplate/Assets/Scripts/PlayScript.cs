@@ -16,9 +16,10 @@ public class PlayScript : MonoBehaviour, IEventSystemHandler
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Capture.PieceWasCaptured)
+        if (Capture.hasAlreadyCaptured)
         {
             Turn.playIsActive = false;
+            PlayEnded();
         }
 
         if (!Turn.playIsActive)
@@ -47,7 +48,6 @@ public class PlayScript : MonoBehaviour, IEventSystemHandler
 
     public void PlayStarted()
     {
-        Turn.playIsActive = true;
         print($"This is a {gameObject.tag}");
 
         ob = GetComponent<ObjectManipulator>();
@@ -61,24 +61,23 @@ public class PlayScript : MonoBehaviour, IEventSystemHandler
         }
         else
         {
+            Turn.playIsActive = true;
             print("Play Script I am allowed to move");
             ob.AllowedManipulations = TransformFlags.Move;
         }
-
     }
 
     public void PlayEnded()
     {
         print($"Play has ended for {gameObject.tag} {gameObject.name}");
-        if (allowed && Turn.playIsActive)
+        if (allowed)
         {
             print("TURN ENDED");
-            Turn.playIsActive = false;
-
             allowed = false;
             ob = GetComponent<ObjectManipulator>();
             ob.AllowedManipulations = TransformFlags.None;
             Turn.whiteTurn = !Turn.whiteTurn;
+            Turn.playIsActive = false;
         }
     }
 }

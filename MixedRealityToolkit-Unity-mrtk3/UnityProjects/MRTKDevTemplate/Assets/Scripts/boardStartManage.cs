@@ -11,8 +11,10 @@ public class boardStartManage : MonoBehaviour
         SetupBoard();
     }
 
-    private void SetupBoard()
+    public void SetupBoard()
     {
+        print("RESETTING BOARD");
+
         // This Script should be added to the board.
         // It is expected that the Board will have 2 childrem
         //  Child 1 = The ChessSet, this is all the pieces in the board
