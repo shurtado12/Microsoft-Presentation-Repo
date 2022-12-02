@@ -12,7 +12,7 @@ public class boardStartManage : MonoBehaviour
         SetupBoard();
     }
 
-    private void SetupBoard()
+    public void SetupBoard()
     {
         // This Script should be added to the board.
         // It is expected that the Board will have 2 childrem
@@ -119,5 +119,8 @@ public class boardStartManage : MonoBehaviour
             print(chessPiece.transform.position);
         }
 
+       
+
     }
+     
 }
