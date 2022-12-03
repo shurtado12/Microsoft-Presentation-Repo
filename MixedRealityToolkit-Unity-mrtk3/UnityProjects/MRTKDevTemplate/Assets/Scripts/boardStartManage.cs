@@ -36,6 +36,7 @@ public class boardStartManage : MonoBehaviour
             {
                 print("Found Chess Set");
                 ChessPieces = child.gameObject;
+                print(ChessPieces.transform.childCount);
             }
         }
 
@@ -91,33 +92,60 @@ public class boardStartManage : MonoBehaviour
             // Get board position A1
             Transform cell = BoardPositions.transform.Find(key);
 
-            // Get DarkRook
-            GameObject chessPiece = ChessPieces.transform.Find(value).gameObject;
+            if (ChessPieces.transform.childCount > 0)
+            {
+                // Get DarkRook
+                GameObject chessPiece = ChessPieces.transform.Find(value).gameObject;
 
-            // Get the Cell Properties script
-            CellProperties cellDefaults = cell.gameObject.GetComponent<CellProperties>();
+                // Get the Cell Properties script
+                CellProperties cellDefaults = cell.gameObject.GetComponent<CellProperties>();
 
-            //Print log message
-            print(cellDefaults.DefaultState);
+                //Print log message
+                print(cellDefaults.DefaultState);
 
-            // Set the default parameters these will be used to keep game state later
-            cellDefaults.PositionID = key;
-            cellDefaults.DefaultState = chessPiece.name.ToString();
-            cellDefaults.CurrentState = chessPiece.name.ToString();
+                // Set the default parameters these will be used to keep game state later
+                cellDefaults.PositionID = key;
+                cellDefaults.DefaultState = chessPiece.name.ToString();
+                cellDefaults.CurrentState = chessPiece.name.ToString();
 
-            // I don't think this is necessary because the cell is now the parent of the gameobject but just putting it here for now
-            cellDefaults.DefaultStateGO = chessPiece;
+                // I don't think this is necessary because the cell is now the parent of the gameobject but just putting it here for now
+                cellDefaults.DefaultStateGO = chessPiece;
 
 
-            // This will Move the Chess piece to be a child of the Cell A1            
-            chessPiece.transform.SetParent(cell.transform);
-            //Log message
-            print(cell.transform.position);
+                // This will Move the Chess piece to be a child of the Cell A1            
+                chessPiece.transform.SetParent(cell.transform);
 
-            // Move the chess piece to the position of the cell.  This will only work if you check the TLDR above.
-            // The cell should be an empty object so there is no wierd position offset.
-            chessPiece.transform.position = cell.transform.position;
-            print(chessPiece.transform.position);
+                //Log message
+                //print(cell.transform.position);
+
+                // Move the chess piece to the position of the cell.  This will only work if you check the TLDR above.
+                // The cell should be an empty object so there is no wierd position offset.
+                chessPiece.transform.position = cell.transform.position;
+                print(chessPiece.transform.position);
+            }
+            else
+            {
+                print("Different logic.  Chess pieces are already scattered on the board.");
+
+                // Get the cell
+                GameObject CellPiece = BoardPositions.transform.Find(key).gameObject;
+
+                // Get the Cell Properties script
+                CellProperties cellDefaults = cell.gameObject.GetComponent<CellProperties>();
+
+                //Print log message
+                print(cellDefaults.DefaultState);
+                GameObject chessPiece = cellDefaults.DefaultStateGO;
+                print($"Chesspiece:  {chessPiece.name}");
+
+                // TODO we will need to change the position of the chess piece and parent it to the new cell
+                // For the default GO we will need to find the chess piece in the cells
+                // Then reparent it to its origin
+
+                chessPiece.SetActive(true);
+                chessPiece.transform.position = cell.transform.position;
+            }
+
         }
 
     }

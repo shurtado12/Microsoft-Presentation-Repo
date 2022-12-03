@@ -16,11 +16,7 @@ public class PlayScript : MonoBehaviour, IEventSystemHandler
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Capture.hasAlreadyCaptured)
-        {
-            Turn.playIsActive = false;
-            PlayEnded();
-        }
+
 
         if (!Turn.playIsActive)
         {
@@ -28,14 +24,14 @@ public class PlayScript : MonoBehaviour, IEventSystemHandler
             if (Turn.whiteTurn && gameObject.tag == "WhitePiece")
             {
                 allowed = true;
-                print($"This is a white piece {gameObject.name} and its whites turn allowing movement");
+                //print($"This is a white piece {gameObject.name} and its whites turn allowing movement");
                 return;
             }
 
             if (!Turn.whiteTurn && gameObject.tag == "BlackPiece")
             {
                 allowed = true;
-                print($"This is a black piece {gameObject.name} and its blacks turn allowing movement");
+                //print($"This is a black piece {gameObject.name} and its blacks turn allowing movement");
                 return;
             }
 
@@ -44,6 +40,16 @@ public class PlayScript : MonoBehaviour, IEventSystemHandler
             ob.AllowedManipulations = 0;
         }
 
+    }
+
+    public void Update()
+    {
+        if (Capture.hasAlreadyCaptured)
+        {
+            print("A PIECE WAS CAPTURED.");
+            Turn.playIsActive = false;
+            PlayEnded();
+        }
     }
 
     public void PlayStarted()

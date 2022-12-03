@@ -32,7 +32,7 @@ public class TurnText : MonoBehaviour
             turnText = black;
         }
 
-        print($"button {turnText}");
+        //($"button {turnText}");
         turnButton.text = turnText;
 
 

@@ -31,7 +31,7 @@ public class Capture : MonoBehaviour
                 { // This is black turn
                     if (collision.gameObject.tag != "board" && collision.gameObject.tag == "WhitePiece")
                     {
-                        Destroy(collision.gameObject); // Destroys enemy White Piece
+                        collision.gameObject.SetActive(false); // Destroys enemy White Piece
                         hasAlreadyCaptured = true;
                     }
                 }
@@ -39,7 +39,7 @@ public class Capture : MonoBehaviour
                 { //This is white turn
                     if (collision.gameObject.tag != "board" && collision.gameObject.tag == "BlackPiece")
                     {
-                        Destroy(collision.gameObject);// Destroys enemy White Piece
+                        collision.gameObject.SetActive(false); // Destroys enemy Black Piece
                         hasAlreadyCaptured = true;
                     }
                 }
